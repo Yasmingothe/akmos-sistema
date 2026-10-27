@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AKMOS Palmas | Kits e suplementos Akmos</title>
+  <meta name="description" content="Kits de produtos Akmos para emagrecimento, beleza, treino, energia, imunidade e mais. Escolha o seu objetivo e peça pelo WhatsApp.">
+  <meta property="og:title" content="AKMOS Palmas | Kits por objetivo">
+  <meta property="og:description" content="Escolha o seu objetivo e peça o kit Akmos pelo WhatsApp.">
+  <meta property="og:image" content="img/kit-ak-body.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="topo">
+    <div class="container topo-conteudo">
+      <a href="#inicio" class="logo"><span>AKMOS</span></a>
+
+      <nav class="menu">
+        <a href="#kits">Kits</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#beneficios">Por que nós</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a href="#contato">Contato</a>
+      </nav>
+
+      <!-- TROCAR o número em TODOS os links wa.me (use Ctrl+H no VS Code: 5563999564173) -->
+      <div class="topo-botoes">
+        <a class="btn btn-pequeno" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20os%20produtos%20Akmos." target="_blank" rel="noopener">WhatsApp</a>
+        <!-- Entrada do revendedor: abre o login aqui mesmo e leva ao painel na mesma aba -->
+        <a class="btn-entrar" id="btn-entrar" href="/admin/" data-abrir-login>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.24-8 5v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1c0-2.76-3.58-5-8-5Z"/></svg>
+          <span id="btn-entrar-texto">Entrar</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ LOGIN DO REVENDEDOR ============ -->
+  <dialog class="janela-login" id="janela-login" aria-labelledby="login-titulo">
+    <form id="form-login-site" method="dialog">
+      <button type="button" class="janela-fechar" id="fechar-login" aria-label="Fechar">×</button>
+      <h2 id="login-titulo">Área do revendedor</h2>
+      <p>Entre para cadastrar produtos, montar kits e controlar o estoque.</p>
+      <label for="site-usuario">Usuário</label>
+      <input id="site-usuario" autocomplete="username" required>
+      <label for="site-senha">Senha</label>
+      <input id="site-senha" type="password" autocomplete="current-password" required>
+      <button type="submit" class="btn btn-bloco" id="site-entrar">Entrar</button>
+      <p class="login-erro" id="site-login-erro" role="alert"></p>
+    </form>
+  </dialog>
+
+  <main>
+
+    <!-- ============ HERO / DESTAQUE ============ -->
+    <section class="hero" id="inicio">
+      <div class="container hero-conteudo">
+        <div class="hero-texto">
+          <span class="etiqueta">Revendedor autorizado Akmos · Palmas - TO</span>
+          <h1>Seu objetivo, o kit certo.</h1>
+          <p>Kits montados com produtos Akmos para emagrecimento, beleza, treino, energia, imunidade e muito mais. Escolha o seu e peça direto pelo WhatsApp.</p>
+          <div class="hero-botoes">
+            <a href="#kits" class="btn">Encontrar meu kit</a>
+            <a href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Quero%20uma%20indica%C3%A7%C3%A3o%20de%20kit%20para%20o%20meu%20objetivo." class="btn btn-contorno" target="_blank" rel="noopener">Quero uma indicação</a>
+          </div>
+        </div>
+        <div class="hero-imagem">
+          <img src="img/destaque.png" alt="Produtos Akmos: Body Tea, Carbo Fire, Alerti+, Ativa+ e Slim Fit">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KITS POR OBJETIVO (carrossel) ============ -->
+    <!-- Preço do Kit AK Body = preço oficial da revista. Nos outros kits o valor é a soma dos produtos (Revista Akmos 03/2026). -->
+    <section class="secao secao-kits" id="kits">
+      <div class="container">
+        <h2 class="titulo-secao">Qual é o seu objetivo?</h2>
+        <p class="subtitulo-secao">Montamos kits com os produtos certos para cada meta. Escolha o seu e fale com a gente.</p>
+
+        <div class="carrossel">
+          <button class="carrossel-seta seta-esq" aria-label="Kits anteriores" data-dir="-1">&#8249;</button>
+          <div class="carrossel-trilho" id="trilho-kits">
+
+            <!-- ===== CARD DE KIT (copie este bloco inteiro para criar outro kit) ===== -->
+            <article class="kit">
+              <div class="kit-imagem">
+                <img src="img/kit-ak-body.jpg" alt="Kit AK Body - produtos Akmos" loading="lazy">
+                <span class="kit-selo">Emagrecimento</span>
+              </div>
+              <div class="kit-corpo">
+                <h3>Kit AK Body</h3>
+                <p>Programa completo de 30 dias: orientação alimentar, plano de treinos e suplementos que auxiliam no controle de peso.</p>
+                <span class="kit-inclui">O kit inclui:</span>
+                <ul class="kit-lista">
+                  <li>Alerti+ Energia</li>
+                  <li>Ativa+</li>
+                  <li>Carbo Fire</li>
+                  <li>Slim Fit Creme</li>
+                  <li>Nutri Shake+</li>
+                  <li>Body Tea</li>
+                </ul>
+                <span class="kit-brinde">🎁 Brindes: cartilha, shakeira e tableteira AK Body</span>
+                <div class="kit-preco">
+                  <span class="kit-rotulo">Preço do kit</span>
+                  <span class="preco-kit">R$ 620,40</span>
+                </div>
+                <a class="btn btn-bloco" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vi%20no%20site%20o%20Kit%20AK%20Body%20%28R%24%20620%2C40%29%20e%20tenho%20interesse.%20Pode%20me%20passar%20as%20condi%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">Quero esse kit</a>
+              </div>
+            </article>
+            <article class="kit">
+              <div class="kit-imagem">
+                <img src="img/kit-pele.jpg" alt="Kit Pele, Cabelo e Unhas - produtos Akmos" loading="lazy">
+                <span class="kit-selo">Beleza</span>
+              </div>
+              <div class="kit-corpo">
+                <h3>Kit Pele, Cabelo e Unhas</h3>
+                <p>Beleza de dentro pra fora: colágeno Verisol®, ácido hialurônico e biotina para apoiar a pele, os fios e as unhas.</p>
+                <span class="kit-inclui">O kit inclui:</span>
+                <ul class="kit-lista">
+                  <li>Young 4K (colágeno)</li>
+                  <li>LePhuv Beauty (gotas)</li>
+                  <li>AK Hair+ Gummy</li>
+                </ul>
+                <div class="kit-preco">
+                  <span class="kit-rotulo">Valor do kit</span>
+                  <span class="preco-kit">R$ 409,20</span>
+                </div>
+                <a class="btn btn-bloco" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vi%20no%20site%20o%20Kit%20Pele%2C%20Cabelo%20e%20Unhas%20%28R%24%20409%2C20%29%20e%20tenho%20interesse.%20Pode%20me%20passar%20as%20condi%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">Quero esse kit</a>
+              </div>
+            </article>
+            <article class="kit">
+              <div class="kit-imagem">
+                <img src="img/kit-treino.jpg" alt="Kit Treino e Performance - produtos Akmos" loading="lazy">
+                <span class="kit-selo">Treino</span>
+              </div>
+              <div class="kit-corpo">
+                <h3>Kit Treino e Performance</h3>
+                <p>Para quem treina e quer mais força e resistência: creatina em gomas, magnésio e hidratação com eletrólitos.</p>
+                <span class="kit-inclui">O kit inclui:</span>
+                <ul class="kit-lista">
+                  <li>Creatina Gummy</li>
+                  <li>Magnum Power</li>
+                  <li>ReHidrata isotônico</li>
+                </ul>
+                <div class="kit-preco">
+                  <span class="kit-rotulo">Valor do kit</span>
+                  <span class="preco-kit">R$ 401,90</span>
+                </div>
+                <a class="btn btn-bloco" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vi%20no%20site%20o%20Kit%20Treino%20e%20Performance%20%28R%24%20401%2C90%29%20e%20tenho%20interesse.%20Pode%20me%20passar%20as%20condi%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">Quero esse kit</a>
+              </div>
+            </article>
+            <article class="kit">
+              <div class="kit-imagem">
+                <img src="img/kit-energia.jpg" alt="Kit Energia e Foco - produtos Akmos" loading="lazy">
+                <span class="kit-selo">Energia</span>
+              </div>
+              <div class="kit-corpo">
+                <h3>Kit Energia e Foco</h3>
+                <p>Para a rotina corrida: cafeína, tirosina, vitaminas do complexo B e zinco para mais disposição e concentração.</p>
+                <span class="kit-inclui">O kit inclui:</span>
+                <ul class="kit-lista">
+                  <li>Alerti+ Energia</li>
+                  <li>Super B12</li>
+                  <li>Right Now</li>
+                </ul>
+                <div class="kit-preco">
+                  <span class="kit-rotulo">Valor do kit</span>
+                  <span class="preco-kit">R$ 222,50</span>
+                </div>
+                <a class="btn btn-bloco" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vi%20no%20site%20o%20Kit%20Energia%20e%20Foco%20%28R%24%20222%2C50%29%20e%20tenho%20interesse.%20Pode%20me%20passar%20as%20condi%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">Quero esse kit</a>
+              </div>
+            </article>
+            <article class="kit">
+              <div class="kit-imagem">
+                <img src="img/kit-equilibrio.jpg" alt="Kit Equilíbrio Feminino - produtos Akmos" loading="lazy">
+                <span class="kit-selo">Mulher</span>
+              </div>
+              <div class="kit-corpo">
+                <h3>Kit Equilíbrio Feminino</h3>
+                <p>Multivitamínico feminino, ômegas com óleo de prímula e magnésio para apoiar o bem-estar do corpo e da mente.</p>
+                <span class="kit-inclui">O kit inclui:</span>
+                <ul class="kit-lista">
+                  <li>Pro Woman</li>
+                  <li>Full Ômega</li>
+                  <li>Magnum Power</li>
+                </ul>
+                <div class="kit-preco">
+                  <span class="kit-rotulo">Valor do kit</span>
+                  <span class="preco-kit">R$ 439,90</span>
+                </div>
+                <a class="btn btn-bloco" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vi%20no%20site%20o%20Kit%20Equil%C3%ADbrio%20Feminino%20%28R%24%20439%2C90%29%20e%20tenho%20interesse.%20Pode%20me%20passar%20as%20condi%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">Quero esse kit</a>
+              </div>
+            </article>
+            <article class="kit">
+              <div class="kit-imagem">
+                <img src="img/kit-imunidade.jpg" alt="Kit Imunidade - produtos Akmos" loading="lazy">
+                <span class="kit-selo">Imunidade</span>
+              </div>
+              <div class="kit-corpo">
+                <h3>Kit Imunidade</h3>
+                <p>Cúrcuma com vitamina C, chlorella orgânica e beta glucana para apoiar as defesas do organismo.</p>
+                <span class="kit-inclui">O kit inclui:</span>
+                <ul class="kit-lista">
+                  <li>Cúrcuma Complex</li>
+                  <li>Chlorella</li>
+                  <li>LePhuv BGL Shield (gotas)</li>
+                </ul>
+                <div class="kit-preco">
+                  <span class="kit-rotulo">Valor do kit</span>
+                  <span class="preco-kit">R$ 336,00</span>
+                </div>
+                <a class="btn btn-bloco" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vi%20no%20site%20o%20Kit%20Imunidade%20%28R%24%20336%2C00%29%20e%20tenho%20interesse.%20Pode%20me%20passar%20as%20condi%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">Quero esse kit</a>
+              </div>
+            </article>
+            <article class="kit">
+              <div class="kit-imagem">
+                <img src="img/kit-articulacoes.jpg" alt="Kit Articulações - produtos Akmos" loading="lazy">
+                <span class="kit-selo">Articulações</span>
+              </div>
+              <div class="kit-corpo">
+                <h3>Kit Articulações</h3>
+                <p>Colágeno tipo II, cúrcuma, glucosamina e gel de massagem para quem quer se movimentar com mais conforto.</p>
+                <span class="kit-inclui">O kit inclui:</span>
+                <ul class="kit-lista">
+                  <li>Day Flex+</li>
+                  <li>LePhuv Artic (gotas)</li>
+                  <li>Doctor Fit Nanotech gel</li>
+                </ul>
+                <div class="kit-preco">
+                  <span class="kit-rotulo">Valor do kit</span>
+                  <span class="preco-kit">R$ 319,60</span>
+                </div>
+                <a class="btn btn-bloco" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vi%20no%20site%20o%20Kit%20Articula%C3%A7%C3%B5es%20%28R%24%20319%2C60%29%20e%20tenho%20interesse.%20Pode%20me%20passar%20as%20condi%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">Quero esse kit</a>
+              </div>
+            </article>
+            <article class="kit">
+              <div class="kit-imagem">
+                <img src="img/kit-sono.jpg" alt="Kit Sono e Relaxamento - produtos Akmos" loading="lazy">
+                <span class="kit-selo">Sono</span>
+              </div>
+              <div class="kit-corpo">
+                <h3>Kit Sono e Relaxamento</h3>
+                <p>Melatonina em gotas, magnésio e óleo essencial de lavanda para desacelerar e dormir melhor.</p>
+                <span class="kit-inclui">O kit inclui:</span>
+                <ul class="kit-lista">
+                  <li>Melatonina Relaxed</li>
+                  <li>Magnum Power</li>
+                  <li>Óleo essencial Sweet Relax</li>
+                </ul>
+                <div class="kit-preco">
+                  <span class="kit-rotulo">Valor do kit</span>
+                  <span class="preco-kit">R$ 291,70</span>
+                </div>
+                <a class="btn btn-bloco" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vi%20no%20site%20o%20Kit%20Sono%20e%20Relaxamento%20%28R%24%20291%2C70%29%20e%20tenho%20interesse.%20Pode%20me%20passar%20as%20condi%C3%A7%C3%B5es%3F" target="_blank" rel="noopener">Quero esse kit</a>
+              </div>
+            </article>
+
+          </div>
+          <button class="carrossel-seta seta-dir" aria-label="Próximos kits" data-dir="1">&#8250;</button>
+        </div>
+
+        <p class="aviso-kits">Não achou o seu objetivo? <a href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Quero%20montar%20um%20kit%20personalizado%20para%20o%20meu%20objetivo." target="_blank" rel="noopener">Monte um kit personalizado com a gente</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ PRODUTOS EM DESTAQUE ============ -->
+    <section class="secao" id="produtos">
+      <div class="container">
+        <h2 class="titulo-secao">Produtos em destaque</h2>
+        <p class="subtitulo-secao">Prefere comprar avulso? Estes são os mais procurados.</p>
+
+        <div class="grade-produtos" id="grade-produtos">
+
+          <!-- ===== CARD DE PRODUTO (copie este bloco inteiro para adicionar mais) ===== -->
+          <article class="card">
+            <div class="card-imagem">
+              <img src="img/creatina-gummy.jpg" alt="Creatina Gummy Akmos" loading="lazy">
+            </div>
+            <div class="card-corpo">
+              <span class="card-categoria">Novidade</span>
+              <h3>Creatina Gummy</h3>
+              <p>Creatina em gomas sabor maçã verde. Auxilia no desempenho físico em exercícios de alta intensidade. 50 gummys.</p>
+              <div class="card-rodape">
+                <span class="preco">R$ 147,70</span>
+                <a class="btn btn-card" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20produto%20Creatina%20Gummy." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-imagem">
+              <img src="img/linha-lephuv.png" alt="Linha LePhuv Akmos" loading="lazy">
+            </div>
+            <div class="card-corpo">
+              <span class="card-categoria">Gotas sublinguais</span>
+              <h3>Linha LePhuv</h3>
+              <p>Suplementos em gotas de absorção rápida: Beauty, Artic, BGL Shield, Blue e Fyre. 30 mL cada.</p>
+              <div class="card-rodape">
+                <span class="preco">R$ 112,00 <small>cada</small></span>
+                <a class="btn btn-card" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20produto%20Linha%20LePhuv." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-imagem">
+              <img src="img/carbo-fire.png" alt="Carbo Fire Akmos" loading="lazy">
+            </div>
+            <div class="card-corpo">
+              <span class="card-categoria">Controle de peso</span>
+              <h3>Carbo Fire</h3>
+              <p>Psyllium, quitosana, cromo e L-triptofano. Auxilia na saciedade e no controle de peso. 60 cápsulas.</p>
+              <div class="card-rodape">
+                <span class="preco">R$ 107,50</span>
+                <a class="btn btn-card" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20produto%20Carbo%20Fire." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-imagem">
+              <img src="img/ativa-mais.png" alt="Ativa+ Akmos" loading="lazy">
+            </div>
+            <div class="card-corpo">
+              <span class="card-categoria">Controle de peso</span>
+              <h3>Ativa+</h3>
+              <p>L-carnitina, coenzima Q10 e inulina para apoiar o metabolismo e a disposição. 30 cápsulas.</p>
+              <div class="card-rodape">
+                <span class="preco">R$ 97,50</span>
+                <a class="btn btn-card" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20produto%20Ativa%2B." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-imagem">
+              <img src="img/alerti-mais.png" alt="Alerti+ Energia Akmos" loading="lazy">
+            </div>
+            <div class="card-corpo">
+              <span class="card-categoria">Energia e foco</span>
+              <h3>Alerti+ Energia</h3>
+              <p>Cafeína, tirosina e colina para mais energia, foco e concentração. 60 cápsulas.</p>
+              <div class="card-rodape">
+                <span class="preco">R$ 99,90</span>
+                <a class="btn btn-card" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20produto%20Alerti%2B%20Energia." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+              </div>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card-imagem">
+              <img src="img/slim-fit.png" alt="Slim Fit Creme Akmos" loading="lazy">
+            </div>
+            <div class="card-corpo">
+              <span class="card-categoria">Corpo</span>
+              <h3>Slim Fit Creme</h3>
+              <p>Creme com ativos vegetais que auxilia na redução de medidas e no aspecto da celulite. 150 g.</p>
+              <div class="card-rodape">
+                <span class="preco">R$ 117,50</span>
+                <a class="btn btn-card" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20produto%20Slim%20Fit%20Creme." target="_blank" rel="noopener">Pedir no WhatsApp</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="aviso-kits">Quer ver a linha completa? <a href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Pode%20me%20mandar%20a%20Revista%20Akmos%20com%20todos%20os%20produtos%3F" target="_blank" rel="noopener">Peça a revista Akmos no WhatsApp</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============ BENEFÍCIOS ============ -->
+    <section class="secao secao-escura" id="beneficios">
+      <div class="container">
+        <h2 class="titulo-secao">Por que comprar com a gente</h2>
+        <div class="grade-beneficios">
+          <div class="beneficio">
+            <div class="beneficio-icone">✓</div>
+            <h3>Produto original</h3>
+            <p>Revenda autorizada Akmos, com procedência garantida de fábrica.</p>
+          </div>
+          <div class="beneficio">
+            <div class="beneficio-icone">%</div>
+            <h3>Condições especiais</h3>
+            <p>Vantagens para clientes cadastrados e para quem leva o kit completo.</p>
+          </div>
+          <div class="beneficio">
+            <div class="beneficio-icone">💬</div>
+            <h3>Orientação de verdade</h3>
+            <p>A gente te ajuda a escolher o kit de acordo com o seu objetivo.</p>
+          </div>
+          <div class="beneficio">
+            <div class="beneficio-icone">📍</div>
+            <h3>Aqui em Palmas</h3>
+            <p>Retire com a gente ou combine a entrega pelo WhatsApp.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DÚVIDAS (FAQ) ============ -->
+    <!-- TROCAR: completar as respostas com o João -->
+    <section class="secao" id="duvidas">
+      <div class="container container-estreito">
+        <h2 class="titulo-secao">Dúvidas frequentes</h2>
+
+        <details>
+          <summary>Posso montar um kit do meu jeito?</summary>
+          <p>Pode! Os kits do site são sugestões. Fale com a gente no WhatsApp, conte o seu objetivo e montamos um kit com os produtos que fazem sentido pra você.</p>
+        </details>
+        <details>
+          <summary>Como faço meu cadastro na Akmos?</summary>
+          <p>Explique aqui o passo a passo do cadastro e as vantagens de ser cliente cadastrado.</p>
+        </details>
+        <details>
+          <summary>Eu era cliente da Bonifica. Como funciona agora?</summary>
+          <p>Explique aqui como fica a migração e o que muda para o cliente.</p>
+        </details>
+        <details>
+          <summary>Quais descontos eu tenho?</summary>
+          <p>Explique aqui as regras de desconto para cadastrados e para kits.</p>
+        </details>
+        <details>
+          <summary>Como recebo meu pedido?</summary>
+          <p>Explique aqui retirada, entrega e formas de pagamento.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ CHAMADA FINAL ============ -->
+    <section class="chamada">
+      <div class="container chamada-conteudo">
+        <h2>Não sabe qual escolher?</h2>
+        <p>Conte o seu objetivo e a gente indica o kit ideal pra você.</p>
+        <a href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20N%C3%A3o%20sei%20qual%20kit%20escolher%2C%20pode%20me%20ajudar%3F" class="btn btn-claro" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="rodape" id="contato">
+    <div class="container rodape-conteudo">
+      <div>
+        <a href="#inicio" class="logo"><span>AKMOS</span></a>
+        <p>Revendedor autorizado Akmos em Palmas - TO.</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p>WhatsApp: <a href="https://wa.me/5563999564173" target="_blank" rel="noopener">(63) 99956-4173</a> <small class="rodape-24h">· atendimento 24 horas</small></p>
+        <p>Instagram: <a href="https://www.instagram.com/bonificapalmas.to/" target="_blank" rel="noopener">@bonificapalmas.to</a></p>
+      </div>
+      <div>
+        <h4>Endereço</h4>
+        <p><a href="https://www.google.com/maps/search/?api=1&amp;query=205+Sul+Alameda+23+QI+09+Lote+2+Palmas+TO" target="_blank" rel="noopener">205 Sul, Alameda 23, QI 09, Lote 2<br>Palmas - TO</a></p>
+        <p>Loja: todos os dias, das 8h às 22h</p>
+      </div>
+    </div>
+    <p class="rodape-aviso container">Suplementos alimentares não são medicamentos e não substituem uma alimentação equilibrada. Consulte um nutricionista ou médico antes de usar. Preços conforme a Revista Akmos edição 03/2026, sujeitos a alteração. Imagens ilustrativas.</p>
+    <p class="rodape-final">© 2026 AKMOS Palmas. Projeto de extensão UNITINS - Sistemas de Informação. · <a href="/admin/" class="link-revendedor" data-abrir-login>Área do revendedor</a></p>
+  </footer>
+
+  <!-- Botão flutuante de WhatsApp -->
+  <a class="whats-flutuante" href="https://wa.me/5563999564173?text=Ol%C3%A1%21%20Vim%20pelo%20site." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.7C5.1 10 10 5.3 16 5.3s10.9 4.7 10.9 10.5S22 26.4 16 26.4zm6-7.8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5v-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.2 1.3 3.4c.2.2 2.3 3.6 5.7 4.9 2.8 1.1 3.4.9 4 .8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
+  </a>
+
+  <!-- Setas do carrossel de kits -->
+  <script>
+    const trilho = document.getElementById('trilho-kits');
+    document.querySelectorAll('.carrossel-seta').forEach(function (botao) {
+      botao.addEventListener('click', function () {
+        const card = trilho.querySelector('.kit');
+        const passo = card.offsetWidth + 24;
+        trilho.scrollBy({ left: passo * Number(botao.dataset.dir), behavior: 'smooth' });
+      });
+    });
+  </script>
+
+  <!-- Carrega kits e produtos do banco e conta os cliques no WhatsApp -->
+  <script src="site.js"></script>
+
+</body>
+</html>

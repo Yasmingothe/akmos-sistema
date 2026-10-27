@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Revendedor | AKMOS</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <header class="topo">
+    <div class="container topo-conteudo">
+      <div class="logo">AKMOS <small>Painel do revendedor</small></div>
+      <div class="topo-acoes">
+        <a href="/" class="link-claro">← Voltar ao site</a>
+        <button class="btn-sair" id="btn-sair" hidden>Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== LOGIN ===================== -->
+  <main class="container" id="tela-login">
+    <form class="caixa-login" id="form-login">
+      <h1>Entrar no painel</h1>
+      <p class="suave">Área do revendedor para gerenciar produtos, kits e estoque.</p>
+      <label for="login-usuario">Usuário</label>
+      <input id="login-usuario" autocomplete="username" value="admin" required>
+      <label for="login-senha">Senha</label>
+      <input id="login-senha" type="password" autocomplete="current-password" required>
+      <button type="submit" class="btn btn-bloco">Entrar</button>
+      <p class="erro" id="login-erro" role="alert"></p>
+    </form>
+  </main>
+
+  <!-- ===================== PAINEL ===================== -->
+  <div id="tela-painel" hidden>
+    <nav class="abas" aria-label="Seções do painel">
+      <div class="container abas-lista">
+        <button class="aba ativa" data-aba="inicio">Início</button>
+        <button class="aba" data-aba="produtos">Produtos</button>
+        <button class="aba" data-aba="kits">Kits</button>
+        <button class="aba" data-aba="cliques">Cliques</button>
+      </div>
+    </nav>
+
+    <main class="container conteudo">
+
+      <!-- INÍCIO -->
+      <section id="aba-inicio" class="aba-conteudo">
+        <div class="titulo-linha">
+          <div>
+            <h1>Olá! 👋</h1>
+            <p class="suave">Resumo da sua revenda. Tudo o que você muda aqui aparece no site na hora.</p>
+          </div>
+          <div class="atalhos">
+            <button class="btn" data-acao="novo-produto">+ Novo produto</button>
+            <button class="btn btn-contorno" data-acao="novo-kit">+ Novo kit</button>
+          </div>
+        </div>
+
+        <div class="numeros">
+          <div class="numero"><span>Valor em estoque</span><strong id="n-valor">-</strong><small id="n-valor-sub"></small></div>
+          <div class="numero"><span>Produtos no site</span><strong id="n-produtos">-</strong><small id="n-produtos-sub"></small></div>
+          <div class="numero alerta"><span>Esgotados ou acabando</span><strong id="n-baixo">-</strong><small id="n-baixo-sub"></small></div>
+          <div class="numero"><span>Cliques no WhatsApp (30 dias)</span><strong id="n-cliques">-</strong><small id="n-cliques-sub"></small></div>
+        </div>
+
+        <div class="painel-bloco">
+          <h2>Interesse dos clientes por dia</h2>
+          <p class="suave pequeno">Cliques nos botões de WhatsApp do site nos últimos 30 dias. Passe o mouse (ou toque) numa barra para ver o dia.</p>
+          <div id="g-dias"></div>
+        </div>
+
+        <div class="dash-grade">
+          <div class="painel-bloco">
+            <h2>Mais procurados</h2>
+            <p class="suave pequeno">Kits e produtos com mais cliques no WhatsApp (30 dias).</p>
+            <div id="g-procurados"></div>
+          </div>
+          <div class="painel-bloco">
+            <h2>Dinheiro em estoque por categoria</h2>
+            <p class="suave pequeno">Preço de venda × quantidade em estoque.</p>
+            <div id="g-categorias"></div>
+          </div>
+        </div>
+
+        <div class="painel-bloco">
+          <h2>Repor primeiro</h2>
+          <p class="suave pequeno">Produtos com 3 unidades ou menos, do mais procurado para o menos procurado. Use − e + para ajustar quando vender ou receber mercadoria.</p>
+          <div id="lista-baixo" class="lista"></div>
+        </div>
+      </section>
+
+      <!-- PRODUTOS -->
+      <section id="aba-produtos" class="aba-conteudo" hidden>
+        <div class="titulo-linha">
+          <h1>Produtos</h1>
+          <button class="btn" data-acao="novo-produto">+ Novo produto</button>
+        </div>
+        <div class="filtros">
+          <input type="search" id="busca-produto" placeholder="Buscar por nome ou categoria" aria-label="Buscar produto">
+          <select id="filtro-produto" aria-label="Filtrar produtos">
+            <option value="todos">Todos</option>
+            <option value="ativos">No site</option>
+            <option value="inativos">Fora do site</option>
+            <option value="destaque">Em destaque</option>
+            <option value="baixo">Estoque baixo</option>
+          </select>
+        </div>
+        <div id="lista-produtos" class="lista"></div>
+      </section>
+
+      <!-- KITS -->
+      <section id="aba-kits" class="aba-conteudo" hidden>
+        <div class="titulo-linha">
+          <h1>Kits</h1>
+          <button class="btn" data-acao="novo-kit">+ Novo kit</button>
+        </div>
+        <p class="suave pequeno">Os kits aparecem no carrossel do site na ordem do campo "Posição".</p>
+        <div id="lista-kits" class="grade-kits"></div>
+      </section>
+
+      <!-- CLIQUES -->
+      <section id="aba-cliques" class="aba-conteudo" hidden>
+        <h1>Cliques no WhatsApp</h1>
+        <p class="suave">Cada vez que um cliente toca num botão de WhatsApp do site, o clique fica registrado aqui.</p>
+
+        <form class="filtro-datas" id="form-cliques">
+          <div><label for="c-inicio">De</label><input type="date" id="c-inicio"></div>
+          <div><label for="c-fim">Até</label><input type="date" id="c-fim"></div>
+          <button type="submit" class="btn">Atualizar</button>
+        </form>
+
+        <div class="numeros">
+          <div class="numero"><span>Total de cliques</span><strong id="c-total">-</strong><small id="c-periodo"></small></div>
+          <div class="numero"><span>Kit mais clicado</span><strong class="texto" id="c-kit">-</strong><small id="c-kit-sub"></small></div>
+          <div class="numero"><span>Pelo celular</span><strong id="c-celular">-</strong><small>dos cliques no período</small></div>
+        </div>
+
+        <div class="painel-bloco">
+          <h2>Cliques por dia</h2>
+          <p class="suave pequeno">Passe o mouse (ou toque) numa barra para ver o dia.</p>
+          <div id="c-dias"></div>
+        </div>
+
+        <div class="dash-grade">
+          <div class="painel-bloco"><h2>Kits e produtos mais clicados</h2><div id="c-itens"></div></div>
+          <div class="painel-bloco"><h2>Onde o botão estava</h2><div id="c-secoes"></div></div>
+          <div class="painel-bloco"><h2>Tipo de botão</h2><div id="c-tipos"></div></div>
+          <div class="painel-bloco"><h2>Aparelho</h2><div id="c-dispositivos"></div></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ===================== FORMULÁRIO DE PRODUTO ===================== -->
+  <dialog id="dialog-produto">
+    <form id="form-produto" method="dialog" novalidate>
+      <div class="dialog-topo">
+        <h2 id="titulo-produto">Novo produto</h2>
+        <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+      </div>
+      <div class="dialog-corpo">
+        <div class="foto-campo">
+          <div class="foto-previa" id="previa-produto"></div>
+          <div>
+            <label class="btn btn-contorno btn-pequeno" for="foto-produto">Escolher foto</label>
+            <input type="file" id="foto-produto" accept="image/jpeg,image/png,image/webp" hidden>
+            <button type="button" class="link-acao" id="remover-foto-produto" hidden>Remover foto enviada</button>
+            <p class="suave pequeno">JPG, PNG ou WEBP. A foto é ajustada automaticamente.</p>
+          </div>
+        </div>
+
+        <label for="p-nome">Nome *</label>
+        <input id="p-nome" maxlength="100" required>
+
+        <div class="duas-colunas">
+          <div>
+            <label for="p-categoria">Categoria</label>
+            <input id="p-categoria" maxlength="40" list="categorias" placeholder="Ex.: Controle de peso">
+            <datalist id="categorias"></datalist>
+          </div>
+          <div>
+            <label for="p-preco">Preço (R$) *</label>
+            <input id="p-preco" inputmode="decimal" placeholder="0,00" required>
+          </div>
+        </div>
+
+        <label for="p-descricao">Descrição</label>
+        <textarea id="p-descricao" maxlength="500" rows="3" placeholder="Para que serve e principais ingredientes"></textarea>
+
+        <div class="duas-colunas">
+          <div>
+            <label for="p-estoque">Quantidade em estoque *</label>
+            <input id="p-estoque" type="number" min="0" step="1" value="0" required>
+          </div>
+          <div class="checks">
+            <label class="check"><input type="checkbox" id="p-ativo" checked> Mostrar no site</label>
+            <label class="check"><input type="checkbox" id="p-destaque"> Produto em destaque</label>
+          </div>
+        </div>
+        <p class="erro" id="erro-produto" role="alert"></p>
+      </div>
+      <div class="dialog-rodape">
+        <button type="button" class="btn btn-contorno" data-fechar>Cancelar</button>
+        <button type="submit" class="btn" id="salvar-produto">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ===================== FORMULÁRIO DE KIT ===================== -->
+  <dialog id="dialog-kit">
+    <form id="form-kit" method="dialog" novalidate>
+      <div class="dialog-topo">
+        <h2 id="titulo-kit">Novo kit</h2>
+        <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+      </div>
+      <div class="dialog-corpo">
+        <div class="foto-campo">
+          <div class="foto-previa larga" id="previa-kit"></div>
+          <div>
+            <label class="btn btn-contorno btn-pequeno" for="foto-kit">Escolher foto</label>
+            <input type="file" id="foto-kit" accept="image/jpeg,image/png,image/webp" hidden>
+            <button type="button" class="link-acao" id="remover-foto-kit" hidden>Remover foto enviada</button>
+            <p class="suave pequeno">Foto deitada (paisagem) fica melhor no carrossel.</p>
+          </div>
+        </div>
+
+        <div class="duas-colunas">
+          <div>
+            <label for="k-nome">Nome do kit *</label>
+            <input id="k-nome" maxlength="100" required placeholder="Ex.: Kit Emagrecimento">
+          </div>
+          <div>
+            <label for="k-objetivo">Objetivo (selo) *</label>
+            <input id="k-objetivo" maxlength="30" required placeholder="Ex.: Emagrecimento">
+          </div>
+        </div>
+
+        <label for="k-descricao">Descrição</label>
+        <textarea id="k-descricao" maxlength="500" rows="3" placeholder="Para quem é o kit e como ele ajuda"></textarea>
+
+        <label>Produtos do kit *</label>
+        <input type="search" id="k-busca" placeholder="Buscar produto" aria-label="Buscar produto para o kit">
+        <div class="escolha-produtos" id="k-produtos"></div>
+        <p class="pequeno" id="k-resumo"></p>
+
+        <div class="duas-colunas">
+          <div>
+            <label for="k-preco">Preço especial (R$)</label>
+            <input id="k-preco" inputmode="decimal" placeholder="Vazio = soma dos produtos">
+          </div>
+          <div>
+            <label for="k-ordem">Posição no carrossel</label>
+            <input id="k-ordem" type="number" min="0" step="1" value="1">
+          </div>
+        </div>
+
+        <label for="k-brinde">Brinde (opcional)</label>
+        <input id="k-brinde" maxlength="150" placeholder="Ex.: Brinde: shakeira AK Body">
+
+        <label class="check"><input type="checkbox" id="k-ativo" checked> Mostrar no site</label>
+        <p class="erro" id="erro-kit" role="alert"></p>
+      </div>
+      <div class="dialog-rodape">
+        <button type="button" class="btn btn-contorno" data-fechar>Cancelar</button>
+        <button type="submit" class="btn" id="salvar-kit">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+  <div class="dica" id="dica" role="tooltip" hidden></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
